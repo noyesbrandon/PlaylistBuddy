@@ -1,0 +1,1 @@
+# Spotify Playlist Information Helper
