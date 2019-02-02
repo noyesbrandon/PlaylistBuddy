@@ -54,18 +54,19 @@ def main():
                 pass
         
         try:
-            new_song = Song(sp.current_playback())
-            last_request_time = time.time()
+            playing = sp.current_playback()
+            if playing is None:  # if nothing is playing
+                if song is not None:
+                    write_tuple(song.get_tuple())
+                    song = None
+                time.sleep(60)
+                continue
+            else:
+                new_song = Song(playing)
+                last_request_time = time.time()
         except Exception as e:
             print(e)
             time.sleep(1)
-            continue
-
-        if new_song is None:  # if nothing is playing
-            if song is not None:
-                write_tuple(song.get_tuple())
-                song = None
-            time.sleep(60)
             continue
 
         if song is None:
