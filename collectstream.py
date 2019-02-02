@@ -63,7 +63,7 @@ def main():
                 if song is not None:
                     write_tuple(song.get_tuple())
                     song = None
-                time.sleep(60)
+                time.sleep(10)
                 continue
             else:
                 new_song = Song(playing)
