@@ -44,7 +44,6 @@ def main():
     sp = spotipy.Spotify(auth=token)
     last_request_time = time.time()
     playing = sp.current_playback()
-    print(playing)
     if playing is None:
         song = None
     else:
