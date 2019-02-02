@@ -43,6 +43,11 @@ def main():
 
     sp = spotipy.Spotify(auth=token)
     last_request_time = time.time()
+    playing = sp.current_playback
+    if playing is None:
+        song = None
+    else:
+        song = Song(playing)
     song = Song(sp.current_playback())
     print("STARTED")
 
