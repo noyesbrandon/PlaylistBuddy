@@ -70,6 +70,8 @@ def main():
                 last_request_time = time.time()
         except Exception as e:
             print(e)
+            token = util.prompt_for_user_token(username, scope)
+            sp = spotipy.Spotify(auth=token)
             time.sleep(1)
             continue
 
